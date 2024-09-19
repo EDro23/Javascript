@@ -13,3 +13,6 @@ label {
     display: inline-block;
     width: 10em;
 }
+h4 {
+    text-size-adjust: bold;
+}
