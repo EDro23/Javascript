@@ -19,8 +19,8 @@ function runGame() {
             alert("Correct number!");
             alert(`It took you ${counter} guesses!`);
 
-            document.write(`Correct number!\n`);
-            document.write(`Guesses: ${counter}`);
+            //document.write(`Correct number!\n`);
+            //document.write(`Guesses: ${counter}`);
 
             if (!document.getElementById("restartButton")) {
                 document.body.insertAdjacentHTML('beforeend', `<button id="restartButton">Try again</button>`);
