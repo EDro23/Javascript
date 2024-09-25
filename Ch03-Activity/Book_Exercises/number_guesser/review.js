@@ -12,12 +12,16 @@ function runGame() {
     do {
         input = parseInt(prompt("Enter a number between 1-10"));
 
-        if (isNaN(input)) {
+    if (isNaN(input) || input <=0 || input > 10) {
             alert("Not a number, Please try again.");
         }
         else if (input === secretNum) {
-            alert("Correct number!");
-            alert(`It took you ${counter} guesses!`);
+            alert(`You guessed the correct number!`);
+            if (counter === 1) {
+                alert(`It took you ${counter} guess!\nNumber: ${input}`);
+            } else {
+                alert(`It took you ${counter} guesses!\nNumber: ${input}`);
+            }
 
             //document.write(`Correct number!\n`);
             //document.write(`Guesses: ${counter}`);
