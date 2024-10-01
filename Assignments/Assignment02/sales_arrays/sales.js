@@ -13,11 +13,12 @@ let quarterTwo = (region1[1]+region2[1]+region3[1]+region4[1]+region5[1])
 let quarterThree = (region1[2]+region2[2]+region3[2]+region4[2]+region5[2])
 let quarterFour = (region1[3]+region2[3]+region3[3]+region4[3]+region5[3])
 
-// Region 1 total, added to totalSales
+// Variables for regionOneSum and totalSales
 
 let regionOneSum = 0;
 let totalSales = 0;
 
+// Region 1 total, added to totalSales
 
 for (let i = 0; i < region1.length; i++) {
     regionOneSum += region1[i];
