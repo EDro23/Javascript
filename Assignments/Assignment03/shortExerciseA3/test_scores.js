@@ -27,9 +27,13 @@ const calculateAverage = () => {
     return parseInt(total / scores.length);
 };
 
-const processDOM = function() {
+// const processDOM = function() {
+//     $("#add").addEventListener("click", addScore);
+//     $("#score").focus();
+// }
+// Old function
+
+document.addEventListener("DOMContentLoaded", function() {
     $("#add").addEventListener("click", addScore);
     $("#score").focus();
-}
-
-document.addEventListener("DOMContentLoaded", processDOM);
+});
