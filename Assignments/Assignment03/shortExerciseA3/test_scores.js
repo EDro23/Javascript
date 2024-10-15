@@ -33,7 +33,7 @@ const calculateAverage = () => {
 // }
 // Old function
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", () => {
     $("#add").addEventListener("click", addScore);
     $("#score").focus();
 });
