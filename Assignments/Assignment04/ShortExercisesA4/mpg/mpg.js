@@ -34,6 +34,8 @@ const processEntries = () => {
     
     if ((!isNaN(miles)) && miles > 0 && (!isNaN(gallons)) && gallons > 0) {
             $("#mpg").value = calculateMPG(miles, gallons);
+            $("#miles").nextElementSibling.firstChild.nodeValue = "";
+            $("#gallons").nextElementSibling.firstChild.nodeValue = "";
     }
 };
 
