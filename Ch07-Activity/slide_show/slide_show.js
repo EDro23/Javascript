@@ -34,6 +34,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // attach start and pause event handlers
     $("#start").addEventListener("click", () => {
+        if (timer == null) {
+            timer = setInterval( () => {
+                image.src = imageCache
+                
+
+            },2000);
+        }
 
     });
     $("#pause").addEventListener("click", () => {
