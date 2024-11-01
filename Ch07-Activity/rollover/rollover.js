@@ -9,13 +9,15 @@ document.addEventListener("DOMContentLoaded", () => {
     // preload images
     var links = $("#image_list").querySelectorAll("a");
 
-    // attach mouseover and mouseout events for each image
-    for ( let link of links) {
+     // Preload images
 
-        // Preload images
+    for ( let link of links) {
         const image = new Image();
         image.src = link.href;
+    }
 
+        // attach mouseover and mouseout events for each image
+    
         image1.addEventListener("mouseover", () => {
             image1.src = "images/release.jpg"
 
@@ -32,6 +34,6 @@ document.addEventListener("DOMContentLoaded", () => {
             image2.src = "images/bison.jpg"
 
         });           
-    }
+    
 
 });

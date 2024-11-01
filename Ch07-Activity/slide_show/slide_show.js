@@ -34,16 +34,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // attach start and pause event handlers
     $("#start").addEventListener("click", () => {
-        if (timer == null) {
-            timer = setInterval( () => {
-                image.src = imageCache
-                
 
-            },2000);
-        }
-
+        setInterval(runSlideShow, 1000)
+        $("#pause").removeAttribute("disabled");
+        $("#start").setAttribute("disabled", "");
+        
     });
     $("#pause").addEventListener("click", () => {
 
+        clearInterval(timer);
+        $("#pause").setAttribute("disabled", "");
+        $("#start").removeAttribute("disabled");
     });
 });
