@@ -9,7 +9,7 @@ const timerButton = () => {
     if (timer == null) { 
         timer = setInterval( () => {
             counter += 1;
-            $("#number").textContent = counter;
+            $("#number").firstChild.nodeValue = counter;
         },1000);
         /*
             If the timer is null, Add one to the counter
