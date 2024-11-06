@@ -36,7 +36,19 @@ let elapsedMinutes = 0;
 let elapsedSeconds = 0;
 let elapsedMilliseconds = 0;
 
-const tickStopwatch = () => {    
+const tickStopwatch = () => {
+    elapsedMilliseconds = elapsedMilliseconds += 10
+    if (elapsedMilliseconds = 1000) {
+        elapsedSeconds = elapsedSeconds += 1;
+        elapsedMilliseconds = 0;
+    } else if (elapsedSeconds == 60) {
+        elapsedMinutes = elapsedMinutes += 1;
+        elapsedSeconds == 0
+    }
+
+    $("#s_minutes").textContent = elapsedMinutes
+    $("#s_seconds").textContent = elapsedSeconds
+    $("#s_ms").textContent = elapsedMilliseconds
     // increment milliseconds by 10 milliseconds
     
     // if milliseconds total 1000, increment seconds by one and reset milliseconds to zero
