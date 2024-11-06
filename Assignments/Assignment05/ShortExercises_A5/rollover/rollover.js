@@ -1,5 +1,7 @@
 "use strict";
 
+const $ = selector => document.querySelector(selector);
+
 document.addEventListener("DOMContentLoaded", () => {
     const images = document.querySelectorAll("#image_rollovers img");
 
@@ -8,9 +10,15 @@ document.addEventListener("DOMContentLoaded", () => {
         const oldURL = image.src;
         const newURL = image.id;
 
-        // preload rollover image
+        setTimeout(() => {
+            image.src = newURL;
+        }, 1000);
 
-        // set up event handlers for hovering an image
+        setTimeout(() => {
+            image.src = oldURL;
+        }, 2000);
+
+        // Set up event handlers for hovering over the image
         image.addEventListener("mouseover", () => {
             image.src = newURL;
         });
