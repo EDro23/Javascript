@@ -5,7 +5,7 @@ const padSingleDigit = num => num.toString().padStart(2, "0");
 
 const displayCurrentTime = () => {
     const now = new Date();
-    const hours = now.getHours();
+    let hours = now.getHours();
     let ampm = "AM"; // set default value
     
     // correct hours and AM/PM value for display
@@ -37,60 +37,69 @@ let elapsedSeconds = 0;
 let elapsedMilliseconds = 0;
 
 const tickStopwatch = () => {
-    elapsedMilliseconds = elapsedMilliseconds += 10
-    if (elapsedMilliseconds = 1000) {
-        elapsedSeconds = elapsedSeconds += 1;
+    elapsedMilliseconds += 10;
+    if (elapsedMilliseconds === 1000) {
+        elapsedSeconds += 1;
         elapsedMilliseconds = 0;
-    } else if (elapsedSeconds == 60) {
-        elapsedMinutes = elapsedMinutes += 1;
-        elapsedSeconds == 0
+    }
+    if (elapsedSeconds === 60) {
+        elapsedMinutes += 1;
+        elapsedSeconds = 0;
     }
 
     $("#s_minutes").textContent = elapsedMinutes
     $("#s_seconds").textContent = elapsedSeconds
     $("#s_ms").textContent = elapsedMilliseconds
-    // increment milliseconds by 10 milliseconds
-    
-    // if milliseconds total 1000, increment seconds by one and reset milliseconds to zero
-    
-    // if seconds total 60, increment minutes by one and reset seconds to zero
-    
-    //display new stopwatch time
-    
 };
 
-// event handler functions
 const startStopwatch = evt => {
-    // prevent default action of link
-        
-    // do first tick of stop watch and then set interval timer to tick 
-    // stop watch every 10 milliseconds. Store timer object in stopwatchTimer 
-    // variable so next two functions can stop timer.
+    evt.preventDefault();
+
+    // If the stopwatch is already running, do nothing
+    if (stopwatchTimer !== null) return;
+
+    // Do the first tick and then set interval to tick every 10 milliseconds
+    tickStopwatch();
+    stopwatchTimer = setInterval(tickStopwatch, 10);
     
 };
 
 const stopStopwatch = evt => {
-    // prevent default action of link
-        
-    // stop timer
-    
+    evt.preventDefault();
+
+    // Stop the timer if it is running
+    if (stopwatchTimer !== null) {
+        clearInterval(stopwatchTimer);
+        stopwatchTimer = null;
+    }
 };
 
 const resetStopwatch = evt => {
-    // prevent default action of link
-        
-    // stop timer
-        
-    // reset elapsed variables and clear stopwatch display
-    
+    evt.preventDefault();
+
+    // Stop the timer if it is running
+    if (stopwatchTimer !== null) {
+        clearInterval(stopwatchTimer);
+        stopwatchTimer = null;
+    }
+
+    // Reset elapsed time variables
+    elapsedMinutes = 0;
+    elapsedSeconds = 0;
+    elapsedMilliseconds = 0;
+
+    $("#s_minutes").textContent = "0";
+    $("#s_seconds").textContent = "0";
+    $("#s_ms").textContent = "0";
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-	// set initial clock display and then set interval timer to display
-    // new time every second. Don't store timer object because it 
-    // won't be needed - clock will just run.
+    // set initial clock display and start updating it every second
     displayCurrentTime();
     setInterval(displayCurrentTime, 1000);
-	
-	// set up stopwatch event handlers
+    
+    // set up stopwatch event handlers
+    $("#start").addEventListener("click", startStopwatch);
+    $("#stop").addEventListener("click", stopStopwatch);
+    $("#reset").addEventListener("click", resetStopwatch);
 });
