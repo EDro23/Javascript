@@ -35,6 +35,7 @@ const processEntries = () => {
     const phone = $("#phone");
     const country = $("#country");
     const terms = $("#terms");
+    const comments = $("#comments");
 
     // create array for error messages
     const msgs = [];
@@ -48,7 +49,10 @@ const processEntries = () => {
     } 
     if (country.value == "") {
         msgs[msgs.length] = "Please select a country.";
-    } 
+    }
+    if (comments.value.trim() == "") {
+        msgs[msgs.length] = "Please must enter some comments.";
+    }
     if (terms.checked == false) {
         msgs[msgs.length] = "You must agree to the terms of service."; 
     }

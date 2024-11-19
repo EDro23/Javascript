@@ -14,6 +14,7 @@ const toggle = evt => {
         h2Element.className = "minus";
     }
     // divElement.classList.toggle("open");
+    
     if (divElement.hasAttribute("class") && divElement.classList.contains("open")) {
         divElement.removeAttribute("class");
     } else {
