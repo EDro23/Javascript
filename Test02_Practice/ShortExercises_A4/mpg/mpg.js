@@ -17,14 +17,25 @@ const processEntries = () => {
     const gallons = parseFloat($("#gallons").value);
 
     if (isNaN(miles) || miles <= 0) {
-        alert("Miles driven must be a valid number greater than zero");
+        $("#miles").nextElementSibling.firstChild.nodeValue = "Please enter a value for mile"
         focusAndSelect("#miles");
-    } else if (isNaN(gallons) || gallons <= 0) {
-        alert("Gallons of gas used must be a valid number greater than zero.");
+
+    } else {
+        $("#miles").nextElementSibling.firstChild.nodeValue = "*"
+    }
+
+    if (isNaN(gallons) || gallons <= 0) {
+        $("#gallons").nextElementSibling.firstChild.nodeValue = "Gallons of gas used must be a valid number greater than zero."
         focusAndSelect("#gallons");
     } else {
-        $("#mpg").value = calculateMPG(miles, gallons);
+        $("#gallons").nextElementSibling.firstChild.nodeValue = "*"
     }
+    if ((!isNaN(miles)) && miles > 0 && (!isNaN(gallons)) && gallons > 0) {
+        $("#mpg").value = calculateMPG(miles, gallons);
+        $("#miles").nextElementSibling.firstChild.nodeValue = "";
+        $("#gallons").nextElementSibling.firstChild.nodeValue = "";
+    }
+
 };
 
 const clearEntries = () => {

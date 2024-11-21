@@ -9,6 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
         const newURL = image.id;
 
         // preload rollover image
+        setTimeout(() => {
+            image.src = newURL;
+        },1000)
+
+        setTimeout(() => {
+            image.src = oldURL;
+        },2000)
 
         // set up event handlers for hovering an image
         image.addEventListener("mouseover", () => {

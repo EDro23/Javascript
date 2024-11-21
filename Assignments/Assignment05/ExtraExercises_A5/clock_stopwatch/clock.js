@@ -9,17 +9,15 @@ const displayCurrentTime = () => {
     let ampm = "AM"; // set default value
     
     // correct hours and AM/PM value for display
-    if (hours > 12) { // convert from military time
-        hours = hours - 12;
+    if (hours >= 12) {
         ampm = "PM";
-    } else { // adjust 12 noon and 12 midnight
-         switch (hours) {
-            case 12: // noon
-                ampm = "PM";
-                break;
-            case 0:  // midnight
-                hours = 12;
-                ampm = "AM";
+        if (hours > 12) {
+            hours -= 12;
+        }
+    } else {
+        ampm = "AM";
+        if (hours === 0) {
+            hours = 12;
         }
     }
     

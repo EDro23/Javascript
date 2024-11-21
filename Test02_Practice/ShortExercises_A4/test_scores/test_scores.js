@@ -5,6 +5,16 @@ const scores = [88, 98, 77, 88];
 
 const $ = selector => document.querySelector(selector);
 
+const displayScores = () => {
+	let outputString = ""
+
+	for (let i = 0; i < names.length; i++) {
+		outputString += `${names[i]} : ${scores[i]}\n`;
+	}
+
+	$("#scores_display").value = outputString
+}
+
 const addScore = () => {
 	// get user entries
 	const name = $("#name").value;
@@ -36,6 +46,7 @@ const addScore = () => {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
+	$("#display_scores").addEventListener("click", displayScores);
 	$("#add").addEventListener("click", addScore);
 	$("#name").focus();
 });
