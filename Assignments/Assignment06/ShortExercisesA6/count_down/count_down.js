@@ -20,16 +20,35 @@ document.addEventListener("DOMContentLoaded", () => {
             messageLbl.textContent = "Please enter the date in MM/DD/YYYY format.";
             return;
         } 
-        // make sure event date string has a 4-digit year
-        const year = eventDate.substring(eventDate.length - 4); 
-        if (isNaN(year)) {
-            messageLbl.textContent = "Please enter the date in MM/DD/YYYY format.";
+        
+        // extract and validate month, day, and year
+        const month = parseInt(dateParts[0]);
+        const day = parseInt(dateParts[1]);
+        const year = parseInt(dateParts[2]);
+
+        // validate the month
+        if (isNaN(month) || month < 1 || month > 12) {
+            messageLbl.textContent = "Please enter a valid month (1-12).";
             return;
-        }     
+        }
+
+        // validate the year (must be 4 digits)
+        if (isNaN(year) || year.toString().length !== 4) {
+            messageLbl.textContent = "Please enter a valid 4-digit year.";
+            return;
+        }
+
+        // validate the day based on the month and year
+        const daysInMonth = new Date(year, month, 0).getDate(); // calculates days in the given month/year
+        if (isNaN(day) || day < 1 || day > daysInMonth) {
+            messageLbl.textContent = `Please enter a valid day (1-${daysInMonth}) for the given month.`;
+            return;
+        }
+
         // convert event date string to Date object and check for validity
-        let date = new Date(eventDate);
+        let date = new Date(`${year}-${month}-${day}`);
         if (date == "Invalid Date") {
-            messageLbl.textContent = "Please enter the date in MM/DD/YYYY format." ;
+            messageLbl.textContent = "Please enter a valid date in MM/DD/YYYY format." ;
             return;
         }
 
