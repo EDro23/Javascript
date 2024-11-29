@@ -1,12 +1,11 @@
 "use strict";
 const $ = (selector) => document.querySelector(selector);
 
-// Function to get a random number
 const getRandomNumber = (max) => {
 	let random = null;
 	if (!isNaN(max)) {
-		random = Math.random();             // value >= 0.0 and < 1.0
-		random = Math.floor(random * max);  // value is an integer between 0 and max - 1
+		random = Math.random();
+		random = Math.floor(random * max);
 	}
 	return random;
 };

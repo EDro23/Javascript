@@ -4,11 +4,10 @@ const $ = (selector) => document.querySelector(selector);
 
 document.addEventListener("DOMContentLoaded", () => {
     $("#calculate").addEventListener("click", () => {
-        // Get the value entered by the user
+
         const centsInput = $("#cents").value.trim();
         const cents = parseInt(centsInput);
 
-        // Validate the input
         if (isNaN(cents) || cents < 0 || cents > 99) {
             alert("Cents must be a number between 0 and 99.");
             $("#cents").focus();
